@@ -1,0 +1,15 @@
+---
+-hosts: "{{backup_hosts}}"
+  become: true
+
+tasks:
+  - name: Backup from src dir to dest dir
+  # Synchronization using rsync protocol (push) from host
+  - synchronize:
+      src: /home/bill
+      dest: rsync://somehost.com/mnt/data/bill
+
+
+
+  bash -c "rsync -avzh -P --stats --timeout=60  --exclude Downloads . 'my_remote_linux_computer@128.95.170.200:/media/my_remote_linux_computer/LaCie/My\ Documents'"
+  -

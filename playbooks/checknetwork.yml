@@ -1,0 +1,19 @@
+---
+- hosts: drservers
+  become: true
+
+tasks:
+  - name: Copy the script and set permissions
+  copy:
+    src: ../scripts/checkNetwork.sh
+    dest: /usr/local/sbin
+    owner: root
+    group: root
+    mode: u=rwx,g=r,o=rx
+    backup: yes
+ 
+ - name: Add cron to execute the script every 10 minutes
+  cron:
+    name: "check network cron"
+    minute: "*/10"
+    job: "/usr/local/sbin"

@@ -1,0 +1,5 @@
+ansible-playbook ./playbooks/checkNetwork.yml -i hosts.yml --ask-become-pass
+
+ansible-playbook ./playbooks/win_robocopy.yml -i hosts.yml --ask-become-pass
+
+
