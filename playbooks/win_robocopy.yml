@@ -2,13 +2,13 @@
 - name: Backup files
   hosts: win_hosts
 
-    tasks:
-      - name: Backup from src dir to dest dir
-      # Synchronization using robocopy protocol (push) from host
-      # For copy to a linux NAS samba has been configured
-        community.windows.win_robocopy:
-          src: C:\Users\nitro\temp
-          dest: \\raspberrypi\MYNAS\temp
-        become: yes
+  tasks:
+    - name: Backup from src dir to dest dir
+    # Synchronization using robocopy protocol (push) from host
+    # For copy to a linux NAS samba has been configured
+      community.windows.win_robocopy:
+        src: C:\Users\nitro\temp
+        dest: \\raspberrypi\MYNAS\temp
+      become: yes
 
 
