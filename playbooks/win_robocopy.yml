@@ -1,6 +1,6 @@
 ---
 - name: Backup files
-    hosts: win_hosts
+  hosts: win_hosts
 
     tasks:
       - name: Backup from src dir to dest dir
