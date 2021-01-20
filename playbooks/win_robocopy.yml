@@ -1,6 +1,5 @@
 ---
 hosts: win_hosts
-  become: yes
 
 tasks:
   - name: Backup from src dir to dest dir
@@ -9,5 +8,6 @@ tasks:
     community.windows.win_robocopy:
       src: C:\Users\nitro\temp
       dest: \\raspberrypi\MYNAS\temp
+    become: yes
 
 
