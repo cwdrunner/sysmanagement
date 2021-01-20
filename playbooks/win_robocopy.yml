@@ -1,6 +1,6 @@
 ---
 hosts: win_hosts
-  become: true
+  become: yes
 
 tasks:
   - name: Backup from src dir to dest dir
