@@ -1,5 +1,5 @@
 ---
--hosts: win_hosts
+hosts: win_hosts
   become: true
 
 tasks:
