@@ -1,0 +1,36 @@
+--- 
+
+- name: Secure Pi Server
+  hosts: pi_stack
+
+  tasks:
+  - name: create .ssh dir and set permissions
+    ansible.builtin.file:
+      path: /home/pi/.ssh
+      state: directory
+      mode: '0700'
+
+  - name: copy public key
+    ansible.builtin.copy:
+      src: /home/bill/.ssh/id_rsa_pi.pub
+      dest: /home/pi/.ssh/authorized_keys
+      mode: u=rw,g=r,o=r
+
+  - name: set ssh access to key only in sshd_config
+    ansible.builtin.lineinfile:
+      path: /etc/ssh/sshd_config
+      regex: '^.*PasswordAuthentication.$'
+      line: 'PasswordAuthentication no'
+    become: yes
+
+  - name: Restart sshd
+    ansible.builtin.service:
+      name: ssh
+      state: restarted
+    become: yes
+
+
+
+
+
+    
