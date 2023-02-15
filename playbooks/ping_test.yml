@@ -1,7 +1,7 @@
 
 - name: ping hosts
 
-  hosts: cluster 
+  hosts: all 
 
   tasks:
   - name: ping the host
