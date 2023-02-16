@@ -1,11 +1,18 @@
 
-- name: ping hosts
-
+- name: Configure Pi cluster hosts
   hosts: all
+
+  vars:
+    ansible_become: true
+    ansible_become_method: su
 
   tasks:
     - name: ping the host
       ansible.builtin.ping:
+
+    - name: Debug - Show remote env
+      debug:
+        var: ansible_env
 
     - name: Create the nfs directory if it does not exist
       ansible.builtin.file:
