@@ -1,0 +1,17 @@
+
+- name: ping hosts
+
+  hosts: all
+
+  tasks:
+    - name: ping the host
+      ansible.builtin.ping:
+
+    - name: Mount an NFS volume
+      ansible.posix.mount:
+        src: 192.168.10.2:/backup
+        path: /mnt/shared_data
+        opts: rw,sync,hard
+        boot: true
+        state: mounted
+        fstype: nfs
