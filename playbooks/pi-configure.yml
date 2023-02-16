@@ -19,7 +19,7 @@
         path: /nfs/data
         state: directory
         mode: '0755'
-        become_user: pi
+      become_user: pi
 
 
     - name: Mount an NFS volume
@@ -30,4 +30,4 @@
         boot: true
         state: mounted
         fstype: nfs
-        become_user: pi
+      become_user: pi
