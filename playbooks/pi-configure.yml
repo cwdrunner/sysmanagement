@@ -3,7 +3,7 @@
   hosts: all
 
   vars:
-    ansible_become: true
+#    ansible_become: true
 #    ansible_become_method: su
 
   tasks:
@@ -19,6 +19,7 @@
         path: /nfs/data
         state: directory
         mode: '0755'
+        become_user: pi
 
 
     - name: Mount an NFS volume
@@ -29,3 +30,4 @@
         boot: true
         state: mounted
         fstype: nfs
+        become_user: pi
