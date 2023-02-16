@@ -7,10 +7,17 @@
     - name: ping the host
       ansible.builtin.ping:
 
+    - name: Create the nfs directory if it does not exist
+      ansible.builtin.file:
+        path: /nfs/data
+        state: directory
+        mode: '0755'
+
+
     - name: Mount an NFS volume
       ansible.posix.mount:
         src: 192.168.10.2:/backup
-        path: /mnt/shared_data
+        path: /nfs/data
         opts: rw,sync,hard
         boot: true
         state: mounted
